@@ -5,9 +5,9 @@ from models import Person, people_schema, person_schema
 
 
 def read_all():
-    """ Read from the database without writing anythin to the database """
     people = Person.query.all()
     return people_schema.dump(people)
+
 
 def create(person):
     lname = person.get("lname")
@@ -19,18 +19,16 @@ def create(person):
         db.session.commit()
         return person_schema.dump(new_person), 201
     else:
-        abort(406, f"Person with the last name {lname} already exists")
+        abort(406, f"Person with last name {lname} already exists")
 
 
 def read_one(lname):
     person = Person.query.filter(Person.lname == lname).one_or_none()
 
-    if person is None:
+    if person is not None:
         return person_schema.dump(person)
     else:
         abort(404, f"Person with last name {lname} not found")
-
-
 
 
 def update(lname, person):
@@ -38,7 +36,7 @@ def update(lname, person):
 
     if existing_person:
         update_person = person_schema.load(person, session=db.session)
-        existing_person.fnmae = update_person.fname
+        existing_person.fname = update_person.fname
         db.session.merge(existing_person)
         db.session.commit()
         return person_schema.dump(existing_person), 201
@@ -52,7 +50,6 @@ def delete(lname):
     if existing_person:
         db.session.delete(existing_person)
         db.session.commit()
-        return make_response(f"{lname} succesfully deleted", 200)
+        return make_response(f"{lname} successfully deleted", 200)
     else:
         abort(404, f"Person with last name {lname} not found")
-
