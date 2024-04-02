@@ -47,6 +47,6 @@ class PersonSchema(ma.SQLAlchemyAutoSchema):
     notes = fields.Nested(NoteSchema, many=True)
 
 
-note_schema = NoteSchema(many=True)
+note_schema = NoteSchema()
 person_schema = PersonSchema()
 people_schema = PersonSchema(many=True)
