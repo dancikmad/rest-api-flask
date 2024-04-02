@@ -1,6 +1,8 @@
+/* static/css/style.css */
+
 :root {
     --bg-color: white;
-    --main-color: coral;
+    --main-color: rgb(54, 80, 199);
     --secondary-color: lavenderblush;
 }
 
@@ -19,7 +21,6 @@ body {
 h2 {
     margin: 0;
     padding-bottom: 0.3em;
-
 }
 
 hr {
@@ -62,6 +63,11 @@ button,
     padding: 0.3em 1.3em;
     text-transform: uppercase;
     min-width: 23ch;
+}
+
+button:hover {
+    background-color: var(--bg-color);
+    color: var(--main-color);
 }
 
 .button {
