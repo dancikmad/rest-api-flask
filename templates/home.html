@@ -14,18 +14,12 @@
 </head>
 <body>
     <h1>Hello, People!</h1>
-    <ul>
+    <div class="person-create-card">
         {% for person in people %}
-        <h2>{{ person.fname }} {{ person.lname }}</h2>
-        <ul>
-            {% for note in person.notes %}
-            <li>
-                {{ note.content }}
-            </li>
-            {% endfor %}
-        </ul>
+            {% include "_person_create_form.html" %}
         {% endfor %}
-    </ul>
+    </div>
+
     {% if config['DEBUG'] %}
         {% include "_debug.html" %}
     {% endif %}
