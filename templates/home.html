@@ -21,5 +21,8 @@
         </ul>
         {% endfor %}
     </ul>
+    {% if config['DEBUG'] %}
+        {% include "_debug.html" %}
+    {% endif %}
 </body>
 </html>
