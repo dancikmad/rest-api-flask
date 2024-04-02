@@ -8,6 +8,11 @@
     <title>RP Flask REST API</title>
 </head>
 <body>
-    <h1>Hello, version Mark 1!</h1>
+    <h1>Hello, People!</h1>
+    <ul>
+        {% for person in people %}
+        <li>{{ person.fname }} {{ person.lname }}</li>
+        {% endfor %}
+    </ul>
 </body>
 </html>
